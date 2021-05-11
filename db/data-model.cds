@@ -5,6 +5,7 @@ using {cuid} from '@sap/cds/common';
 
 entity VaccinationCenters : cuid {
     status             : String;
+    city               : String;
     rt                 : Double;
     availableVaccines  : Integer;
     sortingCenter      : Association to SortingCenters;
@@ -23,6 +24,7 @@ entity SortingCenters : cuid {
 
 entity PharamceuticalOrders : cuid {
     vaccinesNumber : Integer;
+    pharmName      : String;
     arrivalDate    : Date;
     sortingCenter  : Association to SortingCenters;
 }
