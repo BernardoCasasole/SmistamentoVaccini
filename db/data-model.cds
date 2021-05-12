@@ -4,6 +4,7 @@ using {cuid} from '@sap/cds/common';
 
 
 entity VaccinationCenters : cuid {
+    bookedVaccines     : Integer;
     status             : String;
     city               : String;
     rt                 : Double;

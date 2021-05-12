@@ -1,19 +1,52 @@
- {
-      "name": "runSrv",
-      "cwd": "${workspaceFolder}",
-      "runtimeArgs": [
-        "run-script",
-        "start"
-      ],
-      "type": "node",
-      "request": "launch",
-      "runtimeExecutable": "npm",
-      "windows": {
-        "runtimeExecutable": "npm.cmd"
-      },
-      "console": "internalConsole",
-      "internalConsoleOptions": "openOnSessionStart",
-      "env": {
-        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/provacap\"}"
-      }
-    }
+@server = http://localhost:4004
+
+POST  {{server}}/catalog/sayhello
+
+Content-Type: application/json
+
+{"to":"Luis"}
+
+###
+
+GET {{server}}/catalog/Concerts
+
+Content-Type: application/json
+
+###
+
+GET {{server}}/vacc-center/VaccinationCenters
+Content-Type: application/json
+
+###
+POST {{server}}/vacc-center/calculateRaccomandedVaccine
+Content-Type: application/json
+
+###
+POST {{server}}/vacc-center/updateVaccCenterVaccines
+Content-Type: application/json
+
+{
+    "asingedVaccines":100,
+    "id_vacc_center":"93ddcb80-dc9f-4f44-8cb8-9be16c453ec2"
+}
+
+
+###
+POST {{server}}/vacc-center/getVaccinesTodo
+Content-Type: application/json
+
+{
+    "vacc_center_id":"93ddcb80-dc9f-4f44-8cb8-9be16c453ec2"
+}
+
+###
+
+POST {{server}}/vacc-center/PharamceuticalOrders
+Content-Type: application/json
+
+{
+    "vaccinesNumber" : 123,
+    "pharmName"      : "Moderna",
+    "arrivalDate"    : "2021-05-14",
+    "sortingCenter_ID"  : "499eedad-012e-43e2-85fe-b589234ddc29"
+}
