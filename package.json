@@ -11,6 +11,7 @@
     "@sap/hana-client": "^2.6.61"
   },
   "devDependencies": {
+    "@sap/ux-specification": "^1.84.10",
     "sqlite3": "^5.0.2"
   },
   "scripts": {
@@ -25,5 +26,8 @@
     "hana": {
       "deploy-format": "hdbtable"
     }
-  }
+  },
+  "sapux": [
+    "app/vaccination_centers"
+  ]
 }

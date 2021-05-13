@@ -2,7 +2,7 @@ using vaccination.center as my from '../db/data-model';
 
 service Vacc_Center {
     entity VaccinationCenters as select from my.VaccinationCenters{
-        ID, city, status, recomendedVaccines, availableVaccines
+        ID, city, status, recomendedVaccines, availableVaccines, rt, bookedVaccines, sortingCenter, bookedVaccineAssoc
         };
 
     action calculateRaccomandedVaccine() returns Integer; 
@@ -20,4 +20,9 @@ service Vacc_Center {
     };
 
     entity PharamceuticalOrders as select from my.PharamceuticalOrders;
+
+    entity GetBookedVacc as select from my.BookedVaccines{
+         ID, vaccinationCenter, vaccineDate, completed
+    };
+
 }

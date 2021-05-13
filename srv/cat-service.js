@@ -36,8 +36,11 @@ module.exports = cds.service.impl(async function () {
         var sortingCenter_row_2 = await SELECT.one.from('VaccinationCenters').where({ID : req.data.id_vacc_center});
         var tot_vacc_2 = sortingCenter_row_2.availableVaccines;
 
+        var tot_vacc_3 = sortingCenter_row_2.recomendedVaccines;
+
         await UPDATE ('SortingCenters').with ({availableVaccines : tot_vacc - req.data.asingedVaccines});
         await UPDATE ('VaccinationCenters', req.data.id_vacc_center).with ({availableVaccines : tot_vacc_2 + req.data.asingedVaccines});
+        await UPDATE ('VaccinationCenters', req.data.id_vacc_center).with ({recomendedVaccines : tot_vacc_3 - req.data.asingedVaccines});
         //let [amount]=[1];  
         //await UPDATE ('SortingCenters') .set `availableVaccines = availableVaccines - ${amount}`
         //await UPDATE.entity `SortingCenters` .set `availableVaccines = availableVaccines - ${req.data.asingedVaccines}`;
