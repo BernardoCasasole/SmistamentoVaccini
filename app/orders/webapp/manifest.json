@@ -1,7 +1,7 @@
 {
     "_version": "1.32.0",
     "sap.app": {
-        "id": "vaccination.center.vaccinationcenters",
+        "id": "pharmorders.orders",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -26,15 +26,15 @@
         },
         "crossNavigation": {
             "inbounds": {
-                "vaccination-center-vaccinationcenters-inbound": {
+                "pharmorders-orders-inbound": {
                     "signature": {
                         "parameters": {},
                         "additionalParameters": "allowed"
                     },
-                    "semanticObject": "SortingCenter",
-                    "action": "manage",
-                    "title": "APPSortingCenter",
-                    "subTitle": "Application to handle and manage vaccines in sorting centers.",
+                    "semanticObject": "manage_pharm_orders",
+                    "action": "manage_ord",
+                    "title": "Manage pharm orders",
+                    "subTitle": "",
                     "icon": ""
                 }
             }
@@ -88,56 +88,41 @@
             "routes": [
                 {
                     "pattern": ":?query:",
-                    "name": "VaccinationCentersList",
-                    "target": "VaccinationCentersList"
+                    "name": "PharamceuticalOrdersList",
+                    "target": "PharamceuticalOrdersList"
                 },
                 {
-                    "pattern": "VaccinationCenters({key}):?query:",
-                    "name": "VaccinationCentersObjectPage",
-                    "target": "VaccinationCentersObjectPage"
+                    "pattern": "PharamceuticalOrders({key}):?query:",
+                    "name": "PharamceuticalOrdersObjectPage",
+                    "target": "PharamceuticalOrdersObjectPage"
                 }
             ],
             "targets": {
-                "VaccinationCentersList": {
+                "PharamceuticalOrdersList": {
                     "type": "Component",
-                    "id": "VaccinationCentersList",
+                    "id": "PharamceuticalOrdersList",
                     "name": "sap.fe.templates.ListReport",
                     "options": {
                         "settings": {
-                            "entitySet": "VaccinationCenters",
+                            "entitySet": "PharamceuticalOrders",
                             "variantManagement": "Page",
                             "navigation": {
-                                "VaccinationCenters": {
+                                "PharamceuticalOrders": {
                                     "detail": {
-                                        "route": "VaccinationCentersObjectPage"
+                                        "route": "PharamceuticalOrdersObjectPage"
                                     }
                                 }
                             }
                         }
                     }
                 },
-                "VaccinationCentersObjectPage": {
+                "PharamceuticalOrdersObjectPage": {
                     "type": "Component",
-                    "id": "VaccinationCentersObjectPage",
+                    "id": "PharamceuticalOrdersObjectPage",
                     "name": "sap.fe.templates.ObjectPage",
                     "options": {
                         "settings": {
-                            "entitySet": "VaccinationCenters",
-                        "content":{
-                                "body":{
-                                    "sections": {
-                                      "customSection": {
-                                                "type": "XMLFragment",
-                                                "name": "vaccination.center.vaccinationcenters.ext.fragment.CustomSection",
-                                                "title": "Sezione Custom",
-                                                "position": {
-                                                    "placement": "Before",
-                                                    "anchor": "VaccinationCenters_____"
-                                                }
-                                            }
-                                        }
-                                }
-                            }
+                            "entitySet": "PharamceuticalOrders"
                         }
                     }
                 }

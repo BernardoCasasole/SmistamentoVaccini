@@ -137,8 +137,10 @@ annotate Vacc_Center.VaccinationCenters with @UI : {
             $Type  : 'UI.ReferenceFacet',
             Target : '@UI.FieldGroup#detail',
             Label  : 'Vaccination center details',
+            ID : 'VaccinationCenters_____',
         },
         {
+            ID : 'BookedVaccinesID',
             $Type  : 'UI.ReferenceFacet',
             Target : 'bookedVaccineAssoc/@UI.LineItem#booked',
             Label  : 'Booked vaccines',

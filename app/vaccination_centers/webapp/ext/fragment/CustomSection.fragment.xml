@@ -1,4 +1,11 @@
-<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:l="sap.ui.layout">
-	<Button text="Default"
-        ariaDescribedBy="defaultButtonDescription genericButtonDescription"/>
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+	xmlns="sap.suite.ui.microchart"
+	xmlns:mvc="sap.ui.core.mvc">
+	<ComparisonMicroChart size="L"  width="18rem" scale=" Vaccines" class="sapUiSmallMargin" data="/VaccinationCenters" press="press">
+		<data>
+			<ComparisonMicroChartData	title="Available Vaccines" value="{availableVaccines}" color="Good" />
+            <ComparisonMicroChartData	title="Booked Vaccines" value="{bookedVaccines}" color="Critical" />
+            <ComparisonMicroChartData	title="Recommended Vaccines" value="{recomendedVaccines}" color="Error" />
+		</data>
+	</ComparisonMicroChart>
 </core:FragmentDefinition>

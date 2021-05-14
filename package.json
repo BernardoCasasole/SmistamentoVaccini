@@ -28,6 +28,7 @@
     }
   },
   "sapux": [
-    "app/vaccination_centers"
+    "app/vaccination_centers",
+    "app/orders"
   ]
 }

@@ -19,6 +19,7 @@ service Vacc_Center {
         ID, availableVaccines
     };
 
+    @odata.draft.enabled
     entity PharamceuticalOrders as select from my.PharamceuticalOrders;
 
     entity GetBookedVacc as select from my.BookedVaccines{
