@@ -1,0 +1,1 @@
+sap.ui.define([],function(n){return sap.ui.controller("vaccination.center.vaccinationcenters.ext.controller.ListReportExt",{})});

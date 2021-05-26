@@ -1,11 +1,15 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
 	xmlns="sap.suite.ui.microchart"
-	xmlns:mvc="sap.ui.core.mvc">
-	<ComparisonMicroChart size="L"  width="18rem" scale=" Vaccines" class="sapUiSmallMargin" data="/VaccinationCenters" press="press">
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout">
+
+    <ComparisonMicroChart size="M" scale=" Vaccines" data="/VaccinationCenters" class="sapUiSmallMargin" press="press" width="16rem" shrinkable="true">
 		<data>
-			<ComparisonMicroChartData	title="Available Vaccines" value="{availableVaccines}" color="Good" />
-            <ComparisonMicroChartData	title="Booked Vaccines" value="{bookedVaccines}" color="Critical" />
-            <ComparisonMicroChartData	title="Recommended Vaccines" value="{recomendedVaccines}" color="Error" />
+			<ComparisonMicroChartData	title="Available Vaccines" value="{availableVaccines}"  color="Good"/>
+			<ComparisonMicroChartData	title="Booked Vaccines" value="{bookedVaccines}"  color="Neutral"/>
+			<ComparisonMicroChartData	title="Required Vaccines" value="{requiredVaccines}"  color="Error"/>
+			<ComparisonMicroChartData	title="Recommended Vaccines" value="{recomendedVaccines}" color="Critical"/>
 		</data>
 	</ComparisonMicroChart>
+    
 </core:FragmentDefinition>

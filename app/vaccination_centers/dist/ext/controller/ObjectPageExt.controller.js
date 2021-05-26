@@ -1,0 +1,1 @@
+sap.ui.define([],function(e){return sap.ui.controller("vaccination.center.vaccinationcenters.ext.controller.ObjectPageExt",{onPress:function(){var e="premuto!";sap.m.MessageBox(e)}})});

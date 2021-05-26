@@ -7,6 +7,7 @@ entity VaccinationCenters : cuid {
     bookedVaccines     : Integer;
     status             : String;
     city               : String;
+    requiredVaccines   : Integer;
     rt                 : Double;
     recomendedVaccines : Integer;
     availableVaccines  : Integer;

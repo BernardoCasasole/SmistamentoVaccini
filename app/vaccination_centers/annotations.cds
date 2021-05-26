@@ -111,6 +111,11 @@ annotate Vacc_Center.VaccinationCenters with @UI : {
             },
             {
                 $Type : 'UI.DataField',
+                Value : requiredVaccines,
+                Label : 'Required vaccines'
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : rt,
                 Label : 'RT index value'
             },
@@ -127,8 +132,13 @@ annotate Vacc_Center.VaccinationCenters with @UI : {
             {
                 $Type  : 'UI.DataFieldForAction',
                 Action : 'Vacc_Center.EntityContainer/updateVaccCenterVaccines',
-                Label  : 'Assing vaccines',
+                Label  : 'Assing Vaccines',
             },
+            {
+                $Type : 'UI.DataFieldForAction',
+                Action : 'Vacc_Center.EntityContainer/getVaccinesTodo',
+                Label  : 'Update Booked and Required Vaccines',
+            }
 
         ],
     },
@@ -137,7 +147,7 @@ annotate Vacc_Center.VaccinationCenters with @UI : {
             $Type  : 'UI.ReferenceFacet',
             Target : '@UI.FieldGroup#detail',
             Label  : 'Vaccination center details',
-            ID : 'VaccinationCenters_____',
+            ID : 'VaccinationCenter_______',
         },
         {
             ID : 'BookedVaccinesID',

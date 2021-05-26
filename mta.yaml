@@ -40,7 +40,92 @@ modules:
    requires:
     # 'hana' and 'xsuaa' resources extracted from CAP configuration
     - name: SmistamentoVaccini-db
+  #--------------------------UIS--------------------------------
+ - name: ordershanlder
+   type: html5
+   path: app/orders
+   build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
 
+ - name: vaccineshanlder
+   type: html5
+   path: app/vaccination_centers
+   build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+
+ - name: provacap-app-deployer
+   type: com.sap.application.content
+   path: .
+   requires:
+   - name: provacap-html5-repo-host
+     parameters:
+      content-target: true
+   build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - ordershanlder.zip
+      name: ordershanlder
+      target-path: resources/
+    - artifacts:
+      - vaccineshanlder.zip
+      name: vaccineshanlder
+      target-path: resources/
+ - name: provacap-destination-content
+   type: com.sap.application.content
+   path: .
+   requires:
+   - name: provacap-html5-repo-host
+     parameters:
+      service-key:
+        name: provacap-html5-repo-host-key
+   - name: provacap-destination
+     parameters:
+      content-target: true
+   parameters:
+    content:
+      instance:
+        destinations:
+        - Name: provacap-destination-html5
+          ServiceInstanceName: provacap-html5-repo-host
+          ServiceKeyName: provacap-html5-repo-host-key
+          sap.cloud.service: pharmorders.orders
+        existing_destinations_policy: update
+    build-parameters:
+     no-source: true
+
+ - name: provacap-destination-content_2
+   type: com.sap.application.content
+   path: .
+   requires:
+   - name: provacap-html5-repo-host
+     parameters:
+      service-key:
+        name: provacap-html5-repo-host-key
+   - name: provacap-destination
+     parameters:
+      content-target: true
+   parameters:
+    content:
+      instance:
+        destinations:
+        - Name: provacap-destination-html5
+          ServiceInstanceName: provacap-html5-repo-host
+          ServiceKeyName: provacap-html5-repo-host-key
+          sap.cloud.service: vaccination.center.vaccinationcenters
+        existing_destinations_policy: update
+    build-parameters:
+     no-source: true 
 
 resources:
  # services extracted from CAP configuration
@@ -54,5 +139,15 @@ resources:
      service-plan: hdi-shared
    properties:
      hdi-service-name: ${service-name}
+ - name: provacap-html5-repo-host
+   type: org.cloudfoundry.managed-service
+   parameters:
+    service: html5-apps-repo
+    service-plan: app-host
+ - name: provacap-destination
+   type: org.cloudfoundry.managed-service
+   parameters:
+    service: destination
+    service-plan: lite 
 
 
